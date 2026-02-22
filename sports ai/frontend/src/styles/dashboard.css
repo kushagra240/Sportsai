@@ -1,0 +1,366 @@
+/* =========================
+   Global Styles
+========================= */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   Dashboard Layout
+========================= */
+/* Dashboard Layout */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: rgba(0,0,0,0.4);
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+/* Sidebar collapsed state */
+.sidebar.collapsed {
+  width: 60px; /* collapsed width */
+}
+
+.sidebar.collapsed .sidebar-nav li {
+  text-align: center;       /* center icons or letters */
+  white-space: nowrap;      /* prevent wrapping */
+  overflow: hidden;         /* hide extra text */
+  text-overflow: ellipsis;  /* show … if needed */
+  padding: 12px 0;          /* adjust vertical spacing */
+}
+
+/* Hide the text but keep icons if using icons */
+.sidebar.collapsed .sidebar-nav li span {
+  display: none;  /* hides text completely, keeps icons visible */
+}
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Adjust content margin when sidebar collapses */
+.dashboard-layout .main-content {
+  margin-left: 0; /* No fixed sidebar overlap */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background: rgba(0,0,0,0.4);
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00ff87;
+  font-size: 18px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  padding: 12px 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav li:hover,
+.sidebar-nav li.active {
+  background: linear-gradient(90deg, #00ff87, #60efff);
+  color: #000;
+  transform: translateX(5px);
+}
+
+/* =========================
+   Main Content
+========================= */
+.main-content {
+  margin-left: 220px; /* same as sidebar width */
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar collapses, just shrink margin */
+.main-content.sidebar-collapsed {
+  margin-left: 60px;
+}
+
+/* Header */
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center heading */
+  padding: 20px 0;
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ff87;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ff87;
+}
+
+/* =========================
+   Content Wrapper
+========================= */
+.content-wrapper {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+/* =========================
+   Upload Form
+========================= */
+.upload-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.upload-container input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.upload-container button {
+  padding: 10px 25px;
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.upload-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   Video Preview
+========================= */
+.video-preview {
+  width: 100%;
+  height: 450px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================
+   Score Card
+========================= */
+.score-card {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.score-number {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+  background: linear-gradient(90deg,#00ff87,#60efff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   Pose Thumbnails
+========================= */
+.pose-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.pose-thumbnails img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.pose-thumbnails img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .score-card {
+    width: 90%;
+  }
+
+  .upload-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+/* Modern Custom File Upload */
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  min-width: 220px;
+}
+
+.custom-file-upload:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+/* Upload Button */
+.upload-container button {
+  padding: 12px 30px;
+  background: linear-gradient(90deg,#00ff87,#60efff);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upload-container button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
